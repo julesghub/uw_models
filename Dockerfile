@@ -6,7 +6,9 @@ ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 
-COPY . /home/jovyan/workspace/.
+RUN mkdir ${HOME}/userspace
+
+COPY . ${HOME}/userspace/
 
 USER root
 RUN chown -R ${NB_UID} ${HOME}
