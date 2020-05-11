@@ -6,11 +6,8 @@ ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 
-RUN mkdir ${HOME}/userspace
-
-COPY . ${HOME}/userspace/
-
+# Make sure the contents of our repo are in ${HOME}
+COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
-
